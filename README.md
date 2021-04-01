@@ -1,5 +1,5 @@
 Summary:
-These functions can be used as a template to cache potentially time-consuming computations, utilizing the lexical scoping rules of R to preserve state inside an R object. They deal with matrix inversion specifically, though their format is intentionally simplistic so that they can be adjusted to suit other mathematical needs.
+These functions can be used  to cache potentially time-consuming computations. They deal with matrix inversion specifically.
 
 The <<- operator is used to assign value to an object in an external environment.
 
