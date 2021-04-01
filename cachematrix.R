@@ -1,4 +1,3 @@
-  
 # Matrix inversion is usually a costly computation and there may be some benefit
 # to caching the inverse of a matrix rather than compute it repeatedly. The
 # following two functions are used to cache the inverse of a matrix.
@@ -28,8 +27,7 @@ makeCacheMatrix <- function(x = numeric()) {
 # the inverse has already been computed. If so, it gets the result and skips the
 # computation. If not, it computes the inverse, sets the value in the cache via
 # setinverse function.
-
-# This function assumes that the matrix is always invertible.
+# This function assumes that the matrix is invertible.
 
 cacheSolve <- function(x, ...) {
   m <- x$getsolve()
@@ -43,24 +41,23 @@ cacheSolve <- function(x, ...) {
   m
 }
 
-## Sample run:
-## > x = rbind(c(1, -1/4), c(-1/4, 1))
-## > m = makeCacheMatrix(x)
-## > m$get()
-##       [,1]  [,2]
-## [1,]  1.00 -0.25
-## [2,] -0.25  1.00
+## Sample:
+## > x = matrix(1:4,2,2)
+## > y = makeCacheMatrix(x)
+## > y$get()
+##[,1] [,2]
+##[1,]    1    3
+##[2,]    2    4
 
 ## No cache in the first run
-## > cacheSolve(m)
-##           [,1]      [,2]
-## [1,] 1.0666667 0.2666667
-## [2,] 0.2666667 1.0666667
+## > cacheSolve(y)
+##[,1] [,2]
+##[1,]   -2  1.5
+##[2,]    1 -0.5
 
 ## Retrieving from the cache in the second run
-## > cacheSolve(m)
+## > cacheSolve(y)
 ## getting cached data.
-##           [,1]      [,2]
-## [1,] 1.0666667 0.2666667
-## [2,] 0.2666667 1.0666667
-## > 
+##[,1] [,2]
+##[1,]   -2  1.5
+##[2,]    1 -0.5
