@@ -6,7 +6,23 @@ The <<- operator is used to assign value to an object in an external environment
 
 The solve() function is used to calculate the inverse of a hypothetical invertible matrix.
 
-Repository contents:
+## Sample:
+## > x = matrix(1:4,2,2)
+## > y = makeCacheMatrix(x)
+## > y$get()
+##[,1] [,2]
+##[1,]    1    3
+##[2,]    2    4
 
-makeCacheMatrix.R : makeCacheMatrix(x) - Creates a matrix and can cache its inverse.
-cacheSolve.R : cacheSolve(x, ...) - Computes the inverse of the object returned by makeCacheMatrix() (in this case, a matrix). If the inverse has already been calculated, and the object has not changed, it retrieves the inverse from the cache. The initial computation and cache retrieval can be easily modified.
+## No cache in the first run
+## > cacheSolve(y)
+##[,1] [,2]
+##[1,]   -2  1.5
+##[2,]    1 -0.5
+
+## Retrieving from the cache in the second run
+## > cacheSolve(y)
+## getting cached data.
+##[,1] [,2]
+##[1,]   -2  1.5
+##[2,]    1 -0.5
